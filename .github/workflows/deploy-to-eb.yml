@@ -20,6 +20,13 @@ jobs:
           aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
           aws-region: "us-east-1"
+          application_name: Myawesomeapp
+          environment_name: Myawesomeapp-env-1
+          version_label: ${{ github.run_number }}
+          existing_bucket_name: elasticbeanstalk-eu-west-1-xxxxxxxx
+          region: eu-west-1
+          deployment_package: deploy.zip
+          use_existing_version_if_available: true
 
       - name: Upload package to S3 bucket
         run: aws s3 cp deploy_package.zip s3://my-awesome-app-deploy-andrey-ml/
@@ -31,6 +38,7 @@ jobs:
           --source-bundle S3Bucket="my-awesome-app-deploy-andrey-ml",S3Key="deploy_package.zip" \
           --version-label "ver-${{ github.sha }}" \
           --description "commit-sha-${{ github.sha }}"
+          
 
       - name: Deploy new ElasticBeanstalk Application Version
         run: aws elasticbeanstalk update-environment --environment-name Myawesomeapp-env-1 --version-label "ver-${{ github.sha }}"
