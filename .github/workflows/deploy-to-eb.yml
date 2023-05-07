@@ -24,7 +24,7 @@ jobs:
           environment_name: MlApplication-env
           version_label: ${{ github.run_number }}
           existing_bucket_name: elasticbeanstalk-eu-west-1-xxxxxxxx
-          region: eu-west-1
+          region: us-east-1
           deployment_package: deploy.zip
           use_existing_version_if_available: true
 
