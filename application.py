@@ -41,9 +41,7 @@ def predict_datapoint():
         prdicted_results=str(results[0])
         return render_template('result.html', results=prdicted_results) # rendering the predicted result
 
-    
-    
-
+        
 if __name__=="__main__":
     app.run(host="0.0.0.0",debug=True)        
 
