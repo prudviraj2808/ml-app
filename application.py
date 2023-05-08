@@ -39,7 +39,8 @@ def predict_datapoint():
         results=predict_pipeline.predict(pred_df)
         print("after Prediction")
         prdicted_results=str(results[0])
-        return render_template('result.html', results=prdicted_results) # rendering the predicted result
+        return render_template('home.html')
+                            #    , results=prdicted_results) # rendering the predicted result
 
         
 if __name__=="__main__":
